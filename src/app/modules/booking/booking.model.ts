@@ -1,33 +1,35 @@
-import { model, Schema } from "mongoose";
-import { TBooking } from "./booking.interface";
-import { vTypesEnum } from "./booking.constant";
+import { Schema, model } from "mongoose";
+import { TBooking } from "./bookings.interface";
 
-const bookingSchema = new Schema<TBooking>(
+const BookingSchema = new Schema<TBooking>(
   {
-    customer: {
+    
+    serviceId: {
       type: Schema.Types.ObjectId,
-
-      ref: 'user',
+      ref: "Service",
+     
     },
-    service: {
+    slotId: {
       type: Schema.Types.ObjectId,
-      required: true,
-      ref: 'service',
+      ref: "Slot",
+     
+    },
+    customer: {
+      type: Object(),
     },
     slot: {
-      type: Schema.Types.ObjectId,
-      required: true,
-      ref: 'slot',
+      type: Object(),
+    },
+    service: {
+      type: Object(),
     },
     vehicleType: {
       type: String,
-      enum: vTypesEnum,
       required: true,
     },
     vehicleBrand: {
       type: String,
       required: true,
-     
     },
     vehicleModel: {
       type: String,
@@ -41,17 +43,17 @@ const bookingSchema = new Schema<TBooking>(
       type: String,
       required: true,
     },
+    tran_id: {
+      type: String,
+      required: true,
+    },
+    paymentStatus: {
+      type: String,
+      enum: ["Pending", "Paid", "Failed"],
+      default: "Pending",
+    },
   },
-  { timestamps: true },
-)
+  { timestamps: true }
+);
 
-bookingSchema.methods.toJSON = function () {
-  const obj = this.toObject()
-  delete obj.customer.role
-  return obj
-}
-
-
-
-
-export const BookingModel = model<TBooking>('booking', bookingSchema);
+export const Booking = model<TBooking>("Booking", BookingSchema);

@@ -1,38 +1,27 @@
-import { Types } from "mongoose";
+import {  ObjectId } from "mongoose";
 
-export type TVehicleTypes =
-  | "car"
-  | "truck"
-  | "SUV"
-  | "van"
-  | "motorcycle"
-  | "bus"
-  | "electricVehicle"
-  | "hybridVehicle"
-  | "bicycle"
-  | "tractor";
-
-export type TBooking = {
-  customer?: Types.ObjectId;
-  service: Types.ObjectId;
-  slot: Types.ObjectId;
-  vehicleType: TVehicleTypes;
-  cus_name?: string
-  cus_email?: string
-  cus_phone?: string
-  amount?: number
+// Vehicle Interface
+export interface TBooking {
+  //   customer: ObjectId;
+  _id: ObjectId;
+  serviceId: ObjectId;
+  slotId: ObjectId;
+  customer: {
+    name: string;
+    email: string;
+    phone: number;
+    address: string;
+  };
+  service: object;
+  slot: object;
+  vehicleType: string;
   vehicleBrand: string;
   vehicleModel: string;
   manufacturingYear: number;
   registrationPlate: string;
-  createdAt?: Date
-  updatedAt?: Date
-};
+  tran_id: string;
+  paymentStatus: string;
+}
 
-// export interface TTBooking extends Document, TBooking {}
-
-// export interface ICarServiceBookingPayload
-//   extends Omit<TBooking, "service" | "slot"> {
-//   serviceId: string;
-//   slotId: string;
-// }
+// Slot Document Interface
+export interface SlotDocument extends TBooking, Document {}

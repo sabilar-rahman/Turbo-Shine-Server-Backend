@@ -1,9 +1,11 @@
 import httpStatus from "http-status";
-import catchAsync from "../../utils/catchAsync";
-import sendResponse from "../../utils/sendResponse";
+// import catchAsync from "../../utils/catchAsync";
+// import sendResponse from "../../utils/sendResponse";
 import { UserServices } from "./user.service";
 import { NextFunction, Request, Response } from "express";
 import config from "../../config";
+import catchAsync from "../utils/catchAsync";
+import sendResponse from "../utils/sendResponse";
 
 const createUser = async (req: Request, res: Response) => {
   try {
@@ -66,11 +68,7 @@ const getAllUsers = async (req: Request, res: Response, next: NextFunction) => {
 };
 
 // Controller to update a user's role
-const updateUserRole = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+const updateUserRole = catchAsync(async (req,res) => {
   try {
     const { userId } = req.params; // Get userId from route parameters
     const { role } = req.body; // Get new role from request body
@@ -83,10 +81,18 @@ const updateUserRole = async (
       data: updatedUser,
     });
   } catch (error) {
-    next(error); // Pass the error to the error handler
+    console.error(error);
+  
   }
-};
-const updateUserInfo = catchAsync(async (req: Request, res: Response) => {
+});
+
+
+
+
+
+
+
+const updateUserInfo = catchAsync(async (req, res) => {
   const userId = req.params.id;
   // Get user ID from URL parameters
   const updatedData = req.body; // Get updated data from request body

@@ -1,18 +1,15 @@
+import { Request, Response } from "express";
+import { PaymentServices } from "./payment.service";
 
+const confirmationController = async (req: Request, res: Response) => {
+  const { tran_id, status } = req.query;
+  const result = await PaymentServices.confirmationService(
+    tran_id as string,
+    status as string
+  );
+  res.send(result);
+};
 
-// import catchAsync from '../utils/catchAsync'
-// import sendResponse from '../utils/sendResponse'
-// import { PaymentService } from './payment.service'
-
-// const createPayment = catchAsync(async (req, res) => {
-//   const result = await PaymentService.createPayment(req.body)
-//   sendResponse(res, {
-//     success: true,
-//     message: 'Payment created successfully',
-//     statusCode: 200,
-//     data: result,
-//   })
-// })
-// export const PaymentController = {
-//   createPayment,
-// }
+export const PaymentController = {
+  confirmationController,
+};

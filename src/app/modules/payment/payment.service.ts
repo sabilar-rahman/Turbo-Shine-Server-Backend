@@ -1,43 +1,47 @@
-// import { TPaymentInfo } from './payment.interface'
-// import crypto from 'crypto'
-// import axios from 'axios'
-// import { SlotModel } from '../slot/slot.model'
-// // import Slot from '../slot/slot.model'
+// import { Booking } from "../booking/bookings.model";
+// import { verifyPament } from "./payment.utils";
+import { join } from "path";
+import { readFileSync } from "fs";
+import { verifyPament } from "./payment.utils";
+import { Booking } from "../booking/booking.model";
 
-// const createPayment = async (payload: TPaymentInfo) => {
-//   const { cus_name, cus_email, cus_phone, amount, slot: _id } = payload
-//   const formData = {
-//     cus_name,
-//     cus_email,
-//     cus_phone,
-//     amount,
-//     tran_id: crypto.randomBytes(16).toString('hex'),
-//     signature_key: 'dbb74894e82415a2f7ff0ec3a97e4183',
-//     store_id: 'aamarpaytest',
-//     currency: 'BDT',
-//     desc: 'Service Booking',
-//     cus_add1: 'House 50, Road 5, Block kha, Mirpur-1, Dhaka,',
-//     cus_add2: 'Patuakhali,',
-//     cus_city: 'Dhaka',
-//     cus_country: 'Bangladesh',
-//     success_url: `http://localhost:5000/payment/success`,
-//     fail_url: `http://localhost:5000/payment/success`,
-//     cancel_url: `http://localhost:5000/payment/successk`,
-//     type: 'json',
-//   }
-//   const { data } = await axios.post(
-//     'https://secure.aamarpay.com/jsonpost.php',
-//     formData,
-//   )
-//   if (data.result) {
-//     await SlotModel.findByIdAndUpdate(
-//       _id,
-//       { isBooked: 'booked' },
-//       { new: true, runValidators: true },
-//     )
-//   }
-//   return data
-// }
-// export const PaymentService = {
-//   createPayment,
-// }
+const confirmationService = async (tran_id: string, status: string) => {
+  const verifyResponse = await verifyPament(tran_id);
+  console.log(verifyResponse);
+  let result;
+  let message = "";
+
+  if (verifyResponse && verifyResponse.pay_status === "Successful") {
+    result = await Booking.findOneAndUpdate(
+      { tran_id },
+      {
+        paymentStatus: "Paid",
+      }
+    );
+    message = "Successfully Paid!";
+  } else {
+    message = "Payment Failed!";
+  }
+
+  const filePath = join(__dirname, "../../../views/confirmation.html");
+  let template = readFileSync(filePath, "utf-8");
+
+  template = template.replace(
+    "{{messageText}}",
+    message === "Successfully Paid!" ? "Payment Successful" : "Payment Failed"
+  );
+  template = template.replace(
+    "{{icon}}",
+    message === "Successfully Paid!" ? "✔️" : "❌"
+  );
+  template = template.replace(
+    "{{iconClass}}",
+    message === "Successfully Paid!" ? "success-icon" : "failed-icon"
+  );
+
+  return template;
+};
+
+export const PaymentServices = {
+  confirmationService,
+};

@@ -18,6 +18,8 @@ const createUserIntoDB = async (password: string, payload: TUser) => {
   return result;
 };
 
+
+
 const loginUser = async (payload: TLoginUser) => {
   // Find user and explicitly select password field
   const user = await User.findOne({ email: payload.email }).select("+password");

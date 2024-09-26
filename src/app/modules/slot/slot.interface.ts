@@ -13,3 +13,5 @@ export interface ISlot {
 export interface SlotDocument extends ISlot, Document {}
 
 export interface SlotModel extends Model<SlotDocument> {}
+
+

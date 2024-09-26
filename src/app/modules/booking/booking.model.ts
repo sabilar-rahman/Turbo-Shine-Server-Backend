@@ -1,5 +1,6 @@
 import { Schema, model } from "mongoose";
-import { TBooking } from "./bookings.interface";
+import { TBooking } from "./booking.interface";
+// import { TBooking } from "./bookings.interface";
 
 const BookingSchema = new Schema<TBooking>(
   {

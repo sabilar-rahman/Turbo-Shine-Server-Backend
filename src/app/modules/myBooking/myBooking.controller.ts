@@ -1,4 +1,3 @@
-import { Request, Response } from "express";
 
 import httpStatus from "http-status";
 // import { getMyBookingsFromDB } from "./myBooking.service";

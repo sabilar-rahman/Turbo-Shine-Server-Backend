@@ -24,7 +24,7 @@ app.use(cookieParser());
 
 
 app.get("/", (req: Request, res: Response) => {
-  res.send("Hello!, This is car washing system.");
+  res.send("Hello!, This is Turbo Shine Backend washing system.");
 });
 
 // application routes

@@ -11,7 +11,10 @@ const app: Application = express();
 
 app.use(
   cors({
-    origin: ["http://localhost:5173"],
+    origin: [
+      "http://localhost:5174",
+    ],
+    
     credentials: true,
     // Allow cookies, authorization headers with the same origin, and credentials
   })
@@ -20,8 +23,6 @@ app.use(
 // Add body-parser middleware to handle JSON request bodies
 app.use(express.json()); // This will parse incoming JSON requests
 app.use(cookieParser());
-
-
 
 app.get("/", (req: Request, res: Response) => {
   res.send("Hello!, This is Turbo Shine Backend washing system.");
@@ -34,6 +35,3 @@ app.use(globalErrorHandler);
 app.use(notFound);
 
 export default app;
-
-
-

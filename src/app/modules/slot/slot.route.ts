@@ -3,7 +3,7 @@ import { SlotController } from "./slot.controller";
 import auth from "../../middlewares/auth";
 import { USER_ROLE } from "../user/user.constant";
  import ValidateRequest from "../../middlewares/ValidateRequest";
- import { SlotValidations, updateSlotValidationSchema } from "./slot.validation";
+ import { updateSlotValidationSchema } from "./slot.validation";
 // import auth from "../../middlewares/auth";
 // import { USER_ROLE } from "../user/user.constant";
 

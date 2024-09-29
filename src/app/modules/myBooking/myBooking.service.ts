@@ -2,6 +2,8 @@ import jwt, { JwtPayload } from "jsonwebtoken";
 import config from "../../config";
 import { User } from "../user/user.model";
 import { Booking } from "../booking/booking.model";
+import AppError from "../../errors/AppError";
+import httpStatus from "http-status";
 
 
 
@@ -20,8 +22,8 @@ export const getMyBookingsFromDB = async (authorizationHeader: string) => {
         config.jwt_access_secret as string
       ) as JwtPayload;
       userEmail = decodedToken.email;
-    } catch (err) {
-      throw new Error("Invalid token");
+    } catch {
+      throw new AppError(httpStatus.UNAUTHORIZED, "Invalid token");
     }
   
     // Find the user by email

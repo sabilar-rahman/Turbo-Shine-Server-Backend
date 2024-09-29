@@ -9,12 +9,15 @@ import cors from "cors";
 
 const app: Application = express();
 
+// "https://turbo-shine-client-frontend.vercel.app",
+// "https://turbo-shine-server-backend.vercel.app",
+// "https://turboshine.netlify.app",
 app.use(
   cors({
     origin: [
-      "http://localhost:5174",
+      "https://turbo-shine-client-frontend.vercel.app",
+      "http://localhost:5173",
     ],
-    
     credentials: true,
     // Allow cookies, authorization headers with the same origin, and credentials
   })

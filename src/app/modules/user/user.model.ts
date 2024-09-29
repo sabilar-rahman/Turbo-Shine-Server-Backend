@@ -1,5 +1,5 @@
 import { model, Schema } from "mongoose";
-import { userRoleEnum } from "./user.constant";
+
 import { TUser, UserModel } from "./user.interface";
 import config from "../../config";
 import bcrypt from "bcrypt";

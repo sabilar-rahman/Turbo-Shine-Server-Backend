@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+ 
 import httpStatus from "http-status";
 import AppError from "../../errors/AppError";
 import { SelectedSlot} from "./slot.model";

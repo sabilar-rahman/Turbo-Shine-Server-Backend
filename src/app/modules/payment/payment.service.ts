@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 // import { Booking } from "../booking/bookings.model";
 // import { verifyPament } from "./payment.utils";
 import { join } from "path";

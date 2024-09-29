@@ -18,6 +18,7 @@ router.post(
 
 // router.get("/", auth(USER_ROLE.admin), BookingControllers.getAllBookings);
 router.get("/", auth(USER_ROLE.admin), BookingControllers.getAllBookings);
+
 router.get("/:email", BookingControllers.getBookingsByEmail);
 
 export const bookingRoutes = router;

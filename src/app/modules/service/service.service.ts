@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 // Create a new service
 import { TService, TSlot } from "./service.interface";
 import { Service, Slot } from "./service.model";

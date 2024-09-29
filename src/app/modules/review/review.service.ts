@@ -4,6 +4,8 @@ import config from "../../config";
 import { User } from "../user/user.model";
 import { TReview } from "./review.interface";
 import { Review } from "./review.model";
+import AppError from "../../errors/AppError";
+import httpStatus from "http-status";
 
 const createReview = async (reviewData: TReview, authorizationHeader: any) => {
   // Verify and decode the JWT token
@@ -19,8 +21,9 @@ const createReview = async (reviewData: TReview, authorizationHeader: any) => {
       config.jwt_access_secret as string
     ) as JwtPayload;
     loggedInUserId = decodedToken.sub;
-  } catch (err) {
-    throw new Error("Invalid token");
+  } catch  {
+    // throw new Error("Invalid token");
+    throw new AppError(httpStatus.UNAUTHORIZED, "Invalid token");
   }
 
   const user = await User.findById(loggedInUserId);

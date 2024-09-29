@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+ 
 import { initiatePayment } from "../payment/payment.utils";
 import { Service, Slot } from "../service/service.model";
 import { TBooking } from "./booking.interface";

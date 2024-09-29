@@ -87,7 +87,7 @@ const getAllUsers = async () => {
 };
 
 // Update a user's role by userId
-const updateUserRole = async (userId: String, newRole: "admin" | "user") => {
+const updateUserRole = async (userId: string, newRole: "admin" | "user") => {
   const user = await User.findById(userId);
   if (!user) {
     throw new Error("User not found");

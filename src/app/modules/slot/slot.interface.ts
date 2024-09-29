@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-empty-object-type */
+/* eslint-disable no-undef */
 import { Model, ObjectId } from "mongoose";
 
 export interface ISlot {

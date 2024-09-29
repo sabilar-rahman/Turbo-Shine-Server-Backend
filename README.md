@@ -1,10 +1,24 @@
-# car-wash-system-a3
-
-[Server Live Link](https://car-washing-system-a3.vercel.app/)
-
-## Description
-
+# Turbo Shine Back-end
+[Live LINK ](https://turbo-shine-server-backend.vercel.app)
+```
+Live Deployment Link
+Client: https://turbo-shine-client-frontend.vercel.app
+Server: https://turbo-shine-server-backend.vercel.app
+GitHub Repository Links
+Client: https://github.com/sabilar-rahman/Turbo-Shine-Client-Frontend
+Server: https://github.com/sabilar-rahman/Turbo-Shine-Server-Backend
+(LOGIN) ADMIN credentials
+user: Sabilar@admin.com
+pass: 12345678
+(LOGIN)USER credentials
+user: Sabilar@user.com
+pass: 12345678
+```
 This Car wash booking system project is a comprehensive booking management system that allows users to create, view, and manage their bookings. It offers real-time slot availability checks, role-based access control, and secure password management, making it ideal for managing appointments or service bookings efficiently.
+
+## Introduction 
+Turbo Shine is a user-friendly car wash system website designed to streamline the car cleaning experience for users while providing efficient management tools for service providers.
+
 
 ## Features
 
@@ -55,7 +69,7 @@ This Car wash booking system project is a comprehensive booking management syste
 1. **Clone the repository:**
 
    ```sh
-   git clone  https://github.com/sabilar-rahman/car-wash-system-a3.git
+   git clone  https://github.com/sabilar-rahman/Turbo-Shine-Server-Backend.git
 
    cd your-repo-name
    ```
@@ -74,8 +88,14 @@ This Car wash booking system project is a comprehensive booking management syste
    PORT=5000
    DB_URL=your-database-url from mongodb
    BCRYPT_SALT_ROUNDS=12
-   JWT_ACCESS_SECRET=your_jwt_access_secret
-   JWT_ACCESS_EXPIRES_IN=1h
+   JWT_ACCESS_SECRET= your_jwt_access_secret
+   JWT_ACCESS_EXPIRES_IN= 
+   JWT_REFRESH_SECRET=
+   JWT_REFRESH_EXPIRES_IN=
+   STORE_ID ="aamarpaytest"
+   SIGNATURE_KEY="dbb74894e82415a2f7ff0ec3a97e4183"
+   PAYMENT_URL=" https://sandbox.aamarpay.com/jsonpost.php"
+   PAYMENT_VERIFY_URL="https://sandbox.aamarpay.com/api/v1/trxcheck/request.php"     
    ```
 
 ### Running the Application Locally
@@ -86,39 +106,57 @@ This Car wash booking system project is a comprehensive booking management syste
  npm run start:dev
 ```
 
-## API Endpoints
+## Project Description
+Turbo Shine aims to simplify the process of booking car wash services. Users can easily schedule appointments, select their preferred services, and manage their bookings online. The platform also provides service providers with tools to track and manage appointments effectively.
 
-### Authentication
 
-| Method | Endpoint           | Description             |
-| ------ | ------------------ | ----------------------- |
-| POST   | `/api/auth/signup` | Register a new user     |
-| POST   | `/api/auth/login`  | Log in an existing user |
+## Features
+- Responsive Design: Optimized for both desktop and mobile devices.
+- Advanced Search & Filtering: Quickly find products by name, category, brand, or price.
+- Service Sorting: Sort products by popularity, price, or newest arrivals.
+- Detailed Product Listings: Comprehensive service information and high-quality visuals.
+- Interactive Shopping Cart: Enhanced with Tailwind CSS and AOS animations.
 
-### Bookings
+- Customer Gallery: Showcases satisfied customers using Max Fit products
+-    User registration and login.
+-   Service selection with detailed descriptions.
+-   Booking management (view, cancel, and reschedule).
+-   Payment processing and status tracking.
+-   User profile management.
+-   Admin panel for service management.
+-   Responsive design for mobile and desktop users.
 
-| Method | Endpoint           | Description                          |
-| ------ | ------------------ | ------------------------------------ |
-| POST   | `/api/bookings`    | Create a new booking (User Only)     |
-| GET    | `/api/my-bookings` | Retrieve bookings of the logged user |
-| GET    | `/api/bookings`    | Retrieve all bookings (Admin Only)   |
+## Technology Stack
+- Frontend: React, Redux, TypeScript, Tailwind CSS, AOS (Animate on Scroll)
+- Backend:  Express.js ,Node.js, TypeScript
+- Database: MongoDB
+- Others: Zod for schema validation
 
-### Services
+## Installation Guideline
+### Prerequisites
+Before you begin, ensure you have the following installed:
 
-| Method | Endpoint            | Description                                       |
-| ------ | ------------------- | ------------------------------------------------- |
-| POST   | `/api/services`     | Create a new car wash service (Admin Only)        |
-| GET    | `/api/services/:id` | Retrieve details of a specific service            |
-| GET    | `/api/services`     | Retrieve a list of all available services         |
-| PUT    | `/api/services/:id` | Update details of a specific service (Admin Only) |
-| DELETE | `/api/services/:id` | Delete a specific service (Admin Only)            |
+- Node.js (v14 or higher)
+- npm 
+- MongoDB (running locally or a cloud instance)
 
-### Slots
 
-| Method | Endpoint                  | Description                                               |
-| ------ | ------------------------- | --------------------------------------------------------- |
-| POST   | `/api/services/slots`     | Create a new service slot (Admin Only)                    |
-| GET    | `/api/slots/:id`          | Retrieve details of a specific service slot               |
-| GET    | `/api/slots/availability` | Check availability of all service slots                   |
-| GET    | `/api/slots`              | Retrieve a list of all service slots (Admin Only)         |
-| PUT    | `/api/slots/:id`          | Update the status of a specific service slot (Admin Only) |
+
+### Steps
+
+1. Clone the repository:
+   ```
+   git clone https://github.com/sabilar-rahman/Turbo-Shine-Client-Frontend.git 
+   cd your-repo-name
+   ```
+2. Install dependencies::
+   ```
+   npm install
+   
+   ```
+
+3. Start the development server:
+   ```
+   npm run start:dev
+   
+   ```
